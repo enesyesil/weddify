@@ -3,7 +3,7 @@ import InviteForm from '../components/InviteForm';
 
 const Home: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-cover bg-center" style={{ backgroundImage: "url('/wedding-background.png')" }}>
+    <div className="min-h-screen flex flex-col justify-center items-center bg-wedding-bg bg-cover bg-center">
       <div className="bg-brown-600 bg-opacity-75 text-white font-minecraft text-center p-4 mt-8 mb-4 border-4 border-b-8 border-r-8 rounded shadow-md max-w-4xl mx-auto">
         <h1 className="text-white font-minecraft text-4xl">
           Gaye & Enes

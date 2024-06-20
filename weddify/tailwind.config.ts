@@ -5,10 +5,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'wedding-bg': "url('/wedding-background.png')",
+      },
       colors: {
         green: {
-          100: '#4b6b28', // Darker shade of green
-          200: '#3a5520', // Even darker shade of green
+          100: '#4b6b28',
+          200: '#3a5520',
         },
         brown: {
           600: '#8D6E63',
