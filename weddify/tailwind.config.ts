@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'wedding-bg': "url('/wedding-background.png')",
+        'wedding-bg': "url('/public/wedding-background.png')",
       },
       colors: {
         green: {
