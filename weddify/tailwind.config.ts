@@ -18,7 +18,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        minecraft: ['Minecraft', 'monospace'],
+        minecraft: ['"Press Start 2P"', 'monospace'],
       },
     },
   },
