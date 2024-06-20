@@ -9,7 +9,7 @@ const Home: React.FC = () => {
           Gaye & Enes
         </h1>
       </div>
-      <CountdownTimer targetDate="2024-12-31T00:00:00" />
+      <CountdownTimer targetDate="2024-08-19T19:30:00" />
       <div className="bg-brown-600 bg-opacity-75 text-white font-minecraft text-center p-4 my-4 border-4 border-b-8 border-r-8 rounded shadow-md max-w-lg mx-auto">
         Dear guests, we are excited to invite you to our special day! Please fill out the form below to let us know how many will be attending. We can&apos;t wait to celebrate with you!
       </div>
