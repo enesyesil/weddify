@@ -48,7 +48,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
   return (
     <div className="text-center mb-4 font-minecraft">
       {Object.keys(timeLeft).length === 0 ? (
-        <span className="text-white">Time's up!</span>
+        <span className="text-white">Time&apos;s up!</span>
       ) : (
         <div className="flex justify-center space-x-2">
           {Object.entries(timeLeft).map(([unit, value]) => (
