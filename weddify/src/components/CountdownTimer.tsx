@@ -50,11 +50,11 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
       {Object.keys(timeLeft).length === 0 ? (
         <span className="text-white">Time&apos;s up!</span>
       ) : (
-        <div className="flex justify-center space-x-2">
+        <div className="flex justify-center space-x-4">
           {Object.entries(timeLeft).map(([unit, value]) => (
             <div key={unit} className="text-white bg-green-100 border-4 border-brown-600 px-1 py-1 rounded-none shadow-inner">
               <span className="block text-lg">{value as number}</span>
-              <span className="block">{unit.charAt(0).toUpperCase() + unit.slice(1)}</span>
+              <span className="">{unit.charAt(0).toUpperCase() + unit.slice(1)}</span>
             </div>
           ))}
         </div>
