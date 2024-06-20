@@ -34,13 +34,13 @@ const InviteForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-2">
+    <div className="max-w-md mx-auto p-1">
       <form onSubmit={handleSubmit}>
         <div className="mb-2">
           <label className="block text-white font-minecraft">First Name</label>
           <input
             type="text"
-            className="w-full px-2 py-1 border-4 border-brown-600 bg-transparent text-white rounded-none shadow-inner font-minecraft"
+            className="w-full px-1 py-1 border-4 border-brown-600 bg-transparent text-white rounded-none shadow-inner font-minecraft"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
@@ -50,33 +50,25 @@ const InviteForm: React.FC = () => {
           <label className="block text-white font-minecraft">Last Name</label>
           <input
             type="text"
-            className="w-full px-2 py-1 border-4 border-brown-600 bg-transparent text-white rounded-none shadow-inner font-minecraft"
+            className="w-full px-1 py-1 border-4 border-brown-600 bg-transparent text-white rounded-none shadow-inner font-minecraft"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
           />
         </div>
-        <div className="mb-2">
+        <div className="mb-4">
           <label className="block text-white font-minecraft">How many people will be with you? (Including you)</label>
           <input
             type="number"
-            className="w-full px-2 py-1 border-4 border-brown-600 bg-transparent text-white rounded-none shadow-inner font-minecraft"
+            className="w-full px-1 py-1 border-4 border-brown-600 bg-transparent text-white rounded-none shadow-inner font-minecraft"
             value={attendees}
             onChange={(e) => setAttendees(parseInt(e.target.value))}
             required
           />
         </div>
-        <div className="mb-2">
-          <label className="block text-white font-minecraft">Invite Message</label>
-          <textarea
-            className="w-full px-2 py-1 border-4 border-brown-600 bg-transparent text-white rounded-none shadow-inner font-minecraft"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          ></textarea>
-        </div>
         <button
           type="submit"
-          className="w-full bg-brown-600 text-white py-1 border-4 border-b-8 border-r-8 rounded-none shadow font-minecraft"
+          className="w-full mb-2 bg-brown-600 text-white py-1 border-4 border-b-8 border-r-8 rounded-none shadow font-minecraft"
         >
           Submit
         </button>
