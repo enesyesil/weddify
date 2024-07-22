@@ -50,11 +50,11 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
       {Object.keys(timeLeft).length === 0 ? (
         <span className="text-white">Time&apos;s up!</span>
       ) : (
-        <div className="flex justify-center space-x-4">
+        <div className="flex justify-center flex-wrap space-x-2 sm:space-x-4">
           {Object.entries(timeLeft).map(([unit, value]) => (
-            <div key={unit} className="text-white bg-green-100 border-4 border-brown-600 px-1 py-1 rounded-none shadow-inner">
-              <span className="block text-lg">{value as number}</span>
-              <span className="">{unit.charAt(0).toUpperCase() + unit.slice(1)}</span>
+            <div key={unit} className="flex flex-col items-center justify-center text-white bg-green-100 border-4 border-brown-600 w-20 sm:w-28 md:w-32 lg:w-36 xl:w-40 h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 px-2 py-4 rounded-none shadow-inner mb-4">
+              <span className="block text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">{value as number}</span>
+              <span className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl">{unit.charAt(0).toUpperCase() + unit.slice(1)}</span>
             </div>
           ))}
         </div>
@@ -146,7 +146,7 @@ const InviteForm: React.FC = () => {
 
 const InvitePage: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-wedding-bg bg-cover bg-center">
+    <div className="min-h-screen flex flex-col justify-center items-center bg-wedding-bg bg-cover bg-center p-4">
       <div className="bg-brown-600 bg-opacity-75 text-white font-minecraft text-center p-2 mt-8 mb-8 border-4 border-b-8 border-r-8 rounded shadow-md max-w-2xl mx-auto">
         <h1 className="text-white font-minecraft text-2xl">
           Gaye & Enes
