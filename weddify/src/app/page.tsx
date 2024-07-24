@@ -1,4 +1,4 @@
-import InvitePage from '../components/InviteForm';
+import InvitePage from '../components/InviteInfo';
 
 const HomePage: React.FC = () => {
   return <InvitePage />;
