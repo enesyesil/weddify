@@ -5,9 +5,5 @@
 @tailwind utilities;
 
 body {
-  @apply bg-green-100;
-}
-
-.font-minecraft {
-  font-family: 'Press Start 2P', monospace;
+  @apply font-sans;
 }
