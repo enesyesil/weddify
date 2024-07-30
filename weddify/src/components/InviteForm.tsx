@@ -39,33 +39,33 @@ const InviteForm: React.FC = () => {
   }, [attendees]);
 
   return (
-    <div className="w-auto mx-auto p-2">
+    <div className="w-full mx-auto p-4 max-w-md">
       <form onSubmit={handleSubmit}>
-        <div className="mb-2">
-          <label className="block text-white font-minecraft">First Name</label>
+        <div className="mb-4">
+          <label className="block text-black font-bold">First Name</label>
           <input
             type="text"
-            className="w-full px-2 py-1 border-4 border-brown-600 bg-transparent text-white rounded-none shadow-inner font-minecraft"
+            className="w-full px-3 py-2 border-2 border-black border-b-4 bg-white text-black rounded shadow-sm focus:outline-none focus:ring-black focus:border-black"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
         </div>
-        <div className="mb-2">
-          <label className="block text-white font-minecraft">Last Name</label>
+        <div className="mb-4">
+          <label className="block text-black font-bold">Last Name</label>
           <input
             type="text"
-            className="w-full px-2 py-1 border-4 border-brown-600 bg-transparent text-white rounded-none shadow-inner font-minecraft"
+            className="w-full px-3 py-2 border-2 border-black border-b-4 bg-white text-black rounded shadow-sm focus:outline-none focus:ring-black focus:border-black"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
           />
         </div>
-        <div className="mb-2">
-          <label className="block text-white font-minecraft">How many people will be with you? (Including you)</label>
+        <div className="mb-4">
+          <label className="block text-black font-bold">How many people will be with you? (Including you)</label>
           <input
             type="number"
-            className="w-full px-2 py-1 border-4 border-brown-600 bg-transparent text-white rounded-none shadow-inner font-minecraft"
+            className="w-full px-3 py-2 border-2 border-black border-b-4 bg-white text-black rounded shadow-sm focus:outline-none focus:ring-black focus:border-black"
             value={attendees}
             onChange={(e) => setAttendees(e.target.value)}
             required
@@ -73,12 +73,12 @@ const InviteForm: React.FC = () => {
         </div>
         <button
           type="submit"
-          className="w-full bg-brown-600 text-white py-1 border-4 border-b-8 border-r-8 rounded-none shadow font-minecraft"
+          className="w-full bg-black text-white py-2 rounded shadow-sm font-bold py-2 px-4 border border-b-8 border-zinc-600 transition duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
         >
-          Submit
+          Count me in!
         </button>
       </form>
-      {responseMessage && <p className="text-white font-minecraft mt-4">{responseMessage}</p>}
+      {responseMessage && <p className="text-black font-bold mt-4">{responseMessage}</p>}
     </div>
   );
 };
