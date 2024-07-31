@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -48,7 +50,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
   return (
     <div className="text-center mb-8 font-minecraft">
       {Object.keys(timeLeft).length === 0 ? (
-        <span className="text-black">Time&apos;s up!</span>
+        <span className="text-black">Time up!</span>
       ) : (
         <div className="flex flex-wrap justify-center gap-2">
           {Object.entries(timeLeft).map(([unit, value]) => (
