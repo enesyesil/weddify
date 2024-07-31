@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "G&E Wedding",
+  title: "Gaye&Enes Wedding",
   description: "Gaye&Enes Wedding Invitation",
 };
 
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} font-minecraft`}>{children}</body>
+      
     </html>
   );
 }
