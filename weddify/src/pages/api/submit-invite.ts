@@ -22,6 +22,9 @@ const submitInvite = async (req: NextApiRequest, res: NextApiResponse) => {
     };
 
     try {
+      console.log('Client Email:', process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL);
+      console.log('Private Key Exists:', !!process.env.GOOGLE_PRIVATE_KEY);
+
       const auth = new google.auth.GoogleAuth({
         credentials: {
           client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
@@ -31,14 +34,11 @@ const submitInvite = async (req: NextApiRequest, res: NextApiResponse) => {
       });
 
       const sheets = google.sheets({ version: 'v4', auth });
-      console.log('Google Sheets API client created.');
 
-      const spreadsheetId = '1ImPwo_wtJf7urQczJ6srhUSq_DpkHaO10cs4jm6AnrA'; // Replace with your Google Sheets ID
+      const spreadsheetId = '1ImPwo_wtJf7urQczJ6srhUSq_DpkHaO10cs4jm6AnrA';
       const range = 'Sheet1!A:C'; // Adjust the range based on your sheet structure
-      console.log('Spreadsheet ID:', spreadsheetId);
-      console.log('Range:', range);
 
-      // Append the data to the Google Sheet
+      console.log('Appending data to Google Sheets...');
       const response = await sheets.spreadsheets.values.append({
         spreadsheetId,
         range,
@@ -49,7 +49,8 @@ const submitInvite = async (req: NextApiRequest, res: NextApiResponse) => {
           ],
         },
       });
-      console.log('Data appended to Google Sheet:', response.data);
+
+      console.log('Google Sheets API Response:', response.data);
 
       return res.status(200).json({ success: true, invite: inviteData });
     } catch (error) {
