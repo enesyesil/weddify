@@ -22,13 +22,17 @@ const submitInvite = async (req: NextApiRequest, res: NextApiResponse) => {
     };
 
     try {
-      console.log('Client Email:', process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL);
-      console.log('Private Key Exists:', !!process.env.GOOGLE_PRIVATE_KEY);
+      const base64EncodedServiceAccount = process.env.GOOGLE_SERVICE_ACCOUNT;
+      if (!base64EncodedServiceAccount) {
+        throw new Error('Service account credentials not found');
+      }
+
+      const serviceAccount = JSON.parse(Buffer.from(base64EncodedServiceAccount, 'base64').toString('utf8'));
 
       const auth = new google.auth.GoogleAuth({
         credentials: {
-          client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-          private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+          client_email: serviceAccount.client_email,
+          private_key: serviceAccount.private_key,
         },
         scopes: ['https://www.googleapis.com/auth/spreadsheets'],
       });
