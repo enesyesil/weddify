@@ -5,7 +5,7 @@ import { useState } from 'react';
 const InviteForm: React.FC = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [attendees, setAttendees] = useState<number>(5); // Default value as 5
+  const [attendees, setAttendees] = useState<number>(1); // Default value as 5
   const [responseMessage, setResponseMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
 

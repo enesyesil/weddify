@@ -13,16 +13,18 @@ type Language = 'en' | 'tr';
 const InvitePage: React.FC = () => {
   const [currentLanguage, setCurrentLanguage] = useState<Language>('en');
 
-  const messages: Record<Language, { main: string; date: string; location: string }> = {
+  const messages: Record<Language, { main: string; date: string; location: string; time: string }> = {
     en: {
       main: 'Dear guests, our story is reaching its most magical chapter. As we write the words "happily ever after," your presence at our wedding would make it even more special. Please fill out the form below to let us know how many will be attending.',
       date: 'Date: 19th August 2024',
       location: 'Location: 1811 Albion Rd, Etobicoke, ON M9W 5W4',
+      time: 'Time: 8:00 PM',
     },
     tr: {
       main: 'Değerli misafirlerimiz, hikayemiz en büyülü bölümüne ulaşıyor. "Sonsuza dek mutlu yaşadılar" sözlerini yazarken, düğünümüzde sizin de bulunmanız bu anı daha da özel kılacaktır. Katılacak kişi sayısını aşağıdaki formu doldurarak bize bildiriniz.',
       date: 'Tarih: 19 Ağustos 2024',
       location: 'Konum: 1811 Albion Rd, Etobicoke, ON M9W 5W4',
+      time: 'Saat: 20:00',
     },
   };
 
@@ -40,14 +42,14 @@ const InvitePage: React.FC = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:title" content="Gaye & Enes Wedding Invitation" />
         <meta property="og:description" content="Join us in celebrating the wedding of Gaye & Enes on 19th August 2024. RSVP to let us know how many will be attending." />
-        <meta property="og:image" content="/Users/Enes/Documents/GitHub/weddify/weddify/public/wedding-background.PNG" />
-        <meta property="og:url" content="https://weddify-ten.vercel.app/" />
+        <meta property="og:image" content="/path/to/your/image.jpg" />
+        <meta property="og:url" content="https://yourwebsite.com/invite" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content={currentLanguage === 'en' ? 'en_US' : 'tr_TR'} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Gaye & Enes Wedding Invitation" />
         <meta name="twitter:description" content="Join us in celebrating the wedding of Gaye & Enes on 19th August 2024. RSVP to let us know how many will be attending." />
-        <meta name="twitter:image" content="/Users/Enes/Documents/GitHub/weddify/weddify/public/wedding-background.PNG" />
+        <meta name="twitter:image" content="/path/to/your/image.jpg" />
       </Head>
       <div className="min-h-screen flex flex-col bg-amber-200 p-4">
         <Navbar />
@@ -59,6 +61,7 @@ const InvitePage: React.FC = () => {
           </div>
           <div className="bg-yellow-400 text-black text-center p-4 mt-4 mb-8 border-2 border-black border-b-4 rounded-lg shadow-lg max-w-lg mx-auto">
             <p className="text-md font-bold">{currentMessage.date}</p>
+            <p className="text-md font-bold">{currentMessage.time}</p>
             <p className="text-md font-bold">{currentMessage.location}</p>
           </div>
           <InviteForm />
