@@ -1,7 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { google } from 'googleapis';
-import { GoogleAuth } from 'google-auth-library';
-import path from 'path';
 
 type InviteData = {
   firstName: string;
@@ -24,14 +22,11 @@ const submitInvite = async (req: NextApiRequest, res: NextApiResponse) => {
     };
 
     try {
-      const keyPath = process.env.GOOGLE_SERVICE_ACCOUNT_KEY_PATH;
-      if (!keyPath) {
-        throw new Error('Service account key path is not defined in environment variables');
-      }
-      console.log('Service account key path:', keyPath); // Log the path for debugging
-
-      const auth = new GoogleAuth({
-        keyFile: keyPath,
+      const auth = new google.auth.GoogleAuth({
+        credentials: {
+          client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+          private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+        },
         scopes: ['https://www.googleapis.com/auth/spreadsheets'],
       });
 
@@ -56,7 +51,6 @@ const submitInvite = async (req: NextApiRequest, res: NextApiResponse) => {
       });
       console.log('Data appended to Google Sheet:', response.data);
 
-   
       return res.status(200).json({ success: true, invite: inviteData });
     } catch (error) {
       console.error('Error saving data to Google Sheets:', error);
