@@ -81,7 +81,7 @@ const InviteForm: React.FC = () => {
               id="quantity-input"
               value={attendees}
               readOnly
-              className="bg-black border-0 text-white font-bold text-center text-sm focus:ring-blue-500 focus:border-blue-500 block w-full h-11"
+              className="bg-white text-black font-bold text-center text-lg block w-full h-11"
               required
             />
             <button
