@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getSession, destroySession } from '../../lib/session';
+import { getSession, destroySession } from '../../../lib/session';
 
 export default async function logoutHandler(
   req: NextApiRequest,

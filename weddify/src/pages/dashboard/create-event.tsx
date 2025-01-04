@@ -10,6 +10,9 @@ const CreateEvent = () => {
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
   const [location, setLocation] = useState('');
+  const [message, setMessage] = useState('');
+  const [headerText, setHeaderText] = useState('');
+  const [footerText, setFooterText] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -21,9 +24,16 @@ const CreateEvent = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${session?.user?.id}`, // Pass the user ID
         },
-        body: JSON.stringify({ name, date, location, userId: session?.user?.id }),
+        body: JSON.stringify({
+          name,
+          date,
+          location,
+          message,
+          headerText,
+          footerText,
+          userId: session?.user?.id, // Pass the user ID in the body
+        }),
       });
 
       if (response.ok) {
@@ -68,6 +78,27 @@ const CreateEvent = () => {
           onChange={(e) => setLocation(e.target.value)}
           className="w-full mb-4 p-2 border border-black rounded"
           required
+        />
+        <textarea
+          placeholder="Event Message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          className="w-full mb-4 p-2 border border-black rounded"
+          rows={3}
+        />
+        <input
+          type="text"
+          placeholder="Header Text"
+          value={headerText}
+          onChange={(e) => setHeaderText(e.target.value)}
+          className="w-full mb-4 p-2 border border-black rounded"
+        />
+        <input
+          type="text"
+          placeholder="Footer Text"
+          value={footerText}
+          onChange={(e) => setFooterText(e.target.value)}
+          className="w-full mb-4 p-2 border border-black rounded"
         />
         <button
           type="submit"

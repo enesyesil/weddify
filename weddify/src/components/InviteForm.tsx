@@ -8,28 +8,38 @@ const InviteForm: React.FC<{ eventId: string }> = ({ eventId }) => {
   const [attendees, setAttendees] = useState(1);
   const [responseMessage, setResponseMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
+    setResponseMessage('');
 
     try {
+      console.log('Submitting:', { firstName, lastName, attendees });
       const response = await fetch(`/api/events/${eventId}/guests`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ firstName, lastName, attendees }),
+        body: JSON.stringify({ firstName, lastName, howMany: attendees }),
       });
 
-      const data = await response.json();
-      if (data.success) {
-        setResponseMessage('Thank you for your response!');
-        setSubmitted(true);
-      } else {
-        setResponseMessage('Failed to submit your response. Please try again.');
+      console.log('Response Status:', response.status);
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Error Response:', errorData);
+        setResponseMessage(errorData.error || 'Failed to submit your response. Please try again.');
+        return;
       }
+
+      setResponseMessage('Thank you for your response!');
+      setSubmitted(true);
     } catch (error) {
-      setResponseMessage('Error occurred. Please try again.');
+      console.error('Unexpected Error:', error);
+      setResponseMessage('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -62,17 +72,20 @@ const InviteForm: React.FC<{ eventId: string }> = ({ eventId }) => {
             type="number"
             className="w-full px-3 py-2 border-2 border-black border-b-4 bg-white text-black rounded shadow-sm focus:outline-none focus:ring-black focus:border-black"
             value={attendees}
-            onChange={(e) => setAttendees(parseInt(e.target.value, 10))}
+            onChange={(e) => {
+              const value = parseInt(e.target.value, 10);
+              setAttendees(!isNaN(value) ? Math.max(1, value) : 1);
+            }}
             min={1}
             required
           />
         </div>
         <button
           type="submit"
-          className="w-full bg-black text-white py-2 rounded shadow-sm font-bold"
-          disabled={submitted}
+          className="w-full bg-black text-white py-2 rounded-lg border-b-4 border-zinc-600 shadow-sm font-bold"
+          disabled={submitted || isLoading}
         >
-          {submitted ? 'Submitted' : 'RSVP'}
+          {isLoading ? 'Submitting...' : submitted ? 'Submitted' : 'Count me in!'}
         </button>
       </form>
       {responseMessage && <p className="text-black font-bold mt-4">{responseMessage}</p>}

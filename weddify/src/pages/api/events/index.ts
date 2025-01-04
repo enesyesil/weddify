@@ -1,22 +1,32 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '@/../../prisma/prisma';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '../auth/[...nextauth]';
+import prisma from '../../../../prisma/prisma';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const session = await getServerSession(req, res, authOptions);
+
+  if (!session?.user?.id) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  const userId = parseInt(session.user.id, 10);
+
   if (req.method === 'GET') {
     try {
-      const events = await prisma.event.findMany();
-      return res.status(200).json(events);
+      const events = await prisma.event.findMany({
+        where: { userId },
+        include: { guests: true },
+      });
+      res.status(200).json(events);
     } catch (error) {
       console.error('Error fetching events:', error);
-      return res.status(500).json({ error: 'Failed to fetch events.' });
+      res.status(500).json({ error: 'Failed to fetch events.' });
     }
   } else if (req.method === 'POST') {
-    const { name, date, location, userId } = req.body;
+    const { name, date, location, message, headerText, footerText } = req.body;
 
-    if (!name || !date || !location || !userId) {
+    if (!name || !date || !location) {
       return res.status(400).json({ error: 'Missing required fields.' });
     }
 
@@ -26,14 +36,17 @@ export default async function handler(
           name,
           date: new Date(date),
           location,
-          userId: parseInt(userId, 10),
-          attendees: 0, // Default attendees to 0
+          userId,
+          attendees: 0, // Default attendees count
+          message: message || null, // Ensure this property exists in your Prisma schema before using it
+          headerText: headerText || null,
+          footerText: footerText || null,
         },
       });
-      return res.status(201).json(newEvent);
+      res.status(201).json(newEvent);
     } catch (error) {
       console.error('Error creating event:', error);
-      return res.status(500).json({ error: 'Failed to create event.' });
+      res.status(500).json({ error: 'Failed to create event.' });
     }
   } else {
     res.setHeader('Allow', ['GET', 'POST']);

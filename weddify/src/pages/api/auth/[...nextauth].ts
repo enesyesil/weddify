@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 
-export default NextAuth({
+export const authOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -24,7 +24,7 @@ export default NextAuth({
 
         if (user && (await bcrypt.compare(credentials.password, user.password))) {
           return {
-            id: user.id.toString(), // Ensure id is returned as a string
+            id: user.id.toString(),
             email: user.email,
           };
         }
@@ -34,19 +34,20 @@ export default NextAuth({
     }),
   ],
   session: {
-    strategy: "jwt" as SessionStrategy, // Use JWT for session handling
+    strategy: "jwt" as SessionStrategy,
   },
   callbacks: {
-    async jwt({ token, user }: { token: any, user?: any }) {
+    async jwt({ token, user }: { token: any; user?: { id: string; email: string } }) {
       if (user) {
-        token.id = user.id; // Add id to the token
+        token.id = user.id;
+        token.email = user.email;
       }
       return token;
     },
-    async session({ session, token }: { session: any, token: any }) {
+    async session({ session, token }: { session: any; token: any }) {
       if (token) {
         session.user = {
-          id: token.id as string, // Add id to the session
+          id: token.id as string,
           email: token.email,
         };
       }
@@ -54,4 +55,6 @@ export default NextAuth({
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
-});
+};
+
+export default NextAuth(authOptions);

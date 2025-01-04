@@ -31,6 +31,7 @@ export default async function handler(
         data: {
           firstName,
           lastName,
+          howMany:1,
           eventId: eventIdInt,
         },
       });

@@ -24,6 +24,9 @@ model Event {
   userId     Int
   user       User     @relation(fields: [userId], references: [id])
   guests     Guest[]
+  message    String?  // Optional string
+  headerText String?  // Optional string
+  footerText String?  // Optional string
 }
 
 model Guest {
@@ -31,15 +34,8 @@ model Guest {
   firstName String
   lastName  String
   eventId   Int
+  howMany   Int      // Ensure this field exists and is of type Int
   event     Event    @relation(fields: [eventId], references: [id])
 }
 
-model Product {
-  id          Int      @id @default(autoincrement()) // Auto-incrementing primary key
-  name        String
-  description String?
-  price       Float
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
 

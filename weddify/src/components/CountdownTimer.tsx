@@ -46,7 +46,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
   });
 
   return (
-    <div className="text-center mb-8 font-sans">
+    <div className="text-center mb-8 mt-8 font-sans">
       {Object.keys(timeLeft).length === 0 ? (
         <span className="text-black">Time up!</span>
       ) : (
