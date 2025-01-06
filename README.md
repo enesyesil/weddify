@@ -125,15 +125,18 @@ src/
 
 ### Diagrams
 
+### Diagrams
+
+
 
 #### API Structure:
-(./S3.png)
+![API Structure](./s3.png)
 
 #### System Architecture:
-(./S2.png)
+![System Architecture](./s2.png)
 
 #### Database Schema:
-(./S1.png)
+![Database Schema](./s1.png)
 
 ## How to Use
 1. Register as a new user or log in with existing credentials.
