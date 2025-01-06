@@ -123,6 +123,18 @@ src/
 └── pages/api/            # API routes
 ```
 
+### Diagrams
+
+
+#### API Structure:
+(./S3.png)
+
+#### System Architecture:
+(./S2.png)
+
+#### Database Schema:
+(./S1.png)
+
 ## How to Use
 1. Register as a new user or log in with existing credentials.
 2. Access the dashboard to create and manage events.
