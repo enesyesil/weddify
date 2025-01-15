@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const HeroSection: React.FC = () => {
   return (
@@ -9,13 +10,10 @@ const HeroSection: React.FC = () => {
         </h2>
         <p className="text-lg mb-8 font-bold">
           Weddify helps you design customized invitations, manage guest lists, and collect RSVPs effortlessly.
-        </p>
-        <a
-          href="/dashboard"
-          className="bg-black text-white font-bold py-3 px-6 rounded-lg border-b-4 border-gray-800 hover:bg-gray-900 transition"
-        >
+        </p>        
+        <Link href="/auth/register" className="bg-black text-white font-bold py-3 px-6 rounded-lg border-b-4 border-gray-800 hover:bg-gray-900 transition">
           Get Started
-        </a>
+        </Link>
       </div>
     </section>
   );
