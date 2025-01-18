@@ -18,7 +18,8 @@
       "@/components/*": ["src/components/*"],
       "@/lib/*": ["src/lib/*"],
       "@/types/*": ["src/types/*"],
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@prisma/*": ["prisma/*"]
     },
     "plugins": [
       {
