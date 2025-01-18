@@ -2,6 +2,12 @@
 
 Weddify is a personalized event management platform designed to help users create custom event pages, manage guest lists, and provide tailored invitations for their events.
 
+
+#### Landing Page:
+![Landing Page](./s4.png)
+
+
+
 ## Table of Contents
 - [Features](#features)
 - [Tech Stack](#tech-stack)
