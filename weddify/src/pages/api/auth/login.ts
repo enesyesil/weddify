@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import bcrypt from 'bcrypt';
-import { prisma } from "@prisma/prisma"; // Ensure prisma is set up
+import { prisma } from "@/prisma"; // Ensure prisma is set up
 import jwt from 'jsonwebtoken';
 
 export default async function loginHandler(
