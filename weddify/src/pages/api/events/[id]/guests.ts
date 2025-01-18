@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../../../../prisma/prisma'; // Adjust path as necessary
+import { prisma } from "@/prisma"; // Adjust path as necessary
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { id } = req.query; // This is the event ID
