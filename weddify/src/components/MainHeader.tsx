@@ -24,7 +24,7 @@ const MainNavbar: React.FC = () => {
         <div className="flex gap-4 items-center">
           {session ? (
             <>
-              <span className="text-gray-300 font-bold">Welcome, {session.user?.name || 'User'}!</span>
+              <span className="text-gray-300 font-bold">Welcome {session.user?.name || ''}</span>
               <button
                 onClick={handleLogout}
                 className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"

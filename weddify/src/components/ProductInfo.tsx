@@ -12,19 +12,20 @@ const ProductInfo: React.FC = () => {
           {/* Feature 1 */}
           <div className="bg-white text-black rounded-lg shadow-lg p-6 border-2 border-black">
             <h4 className="text-xl font-bold mb-4">Custom Invitations</h4>
-            <p>Create beautiful invitations that match your unique style.</p>
+            <p>Weddify allows you to personalize every detail—fonts, colors, layouts, and even add a heartfelt message. Once your design is ready, each couple gets a unique link to their custom wedding page. Share this link with your guests for a seamless way to RSVP.</p>
           </div>
 
           {/* Feature 2 */}
           <div className="bg-white text-black rounded-lg shadow-lg p-6 border-2 border-black">
             <h4 className="text-xl font-bold mb-4">Guest Management</h4>
-            <p>Easily track RSVPs and manage your guest list in one place.</p>
+            <p>Simplify the chaos of planning with our powerful guest management tools. Effortlessly track RSVPs, organize your guest list, and ensure every detail is perfect. Stay stress-free while keeping everything in one place.
+</p>
           </div>
 
           {/* Feature 3 */}
           <div className="bg-white text-black rounded-lg shadow-lg p-6 border-2 border-black">
             <h4 className="text-xl font-bold mb-4">Seamless Experience</h4>
-            <p>Intuitive interface to make the process smooth and efficient.</p>
+            <p>Planning your wedding should be a joy, not a hassle. Weddify’s intuitive interface makes creating invitations and managing guests simple and efficient, so you can focus on what truly matters—celebrating your big day.</p>
           </div>
         </div>
       </div>
